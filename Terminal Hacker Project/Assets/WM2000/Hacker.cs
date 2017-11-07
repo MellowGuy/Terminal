@@ -2,25 +2,18 @@
 
 public class Hacker : MonoBehaviour
 {
-	public string greeting = "Hello Dave...";
+	int level;
 
-	// Use this for initialization
 	void Start()
 	{
 		ShowMainMenu();
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
 	}
 
 	void ShowMainMenu()
 	{
 		Terminal.ClearScreen();
 
-		Terminal.WriteLine(greeting);
+		Terminal.WriteLine("Hello Dave...");
 		Terminal.WriteLine("What would you like to hack into?\n");
 
 		Terminal.WriteLine("Press 1 for the local library.");
@@ -28,5 +21,36 @@ public class Hacker : MonoBehaviour
 		Terminal.WriteLine("Press 3 for NASA.\n");
 
 		Terminal.WriteLine("Enter your selection:");
+	}
+
+	void OnUserInput(string input)
+	{
+		if (input == "menu")
+		{
+			ShowMainMenu();
+		}
+		else if (input == "1")
+		{
+			level = 1;
+			StartGame();
+		}
+		else if (input == "2")
+		{
+			level = 2;
+			StartGame();
+		}
+		else if (input == "007")
+		{
+			Terminal.WriteLine("Please select a level Mr Bond!");
+		}
+		else
+		{
+			Terminal.WriteLine("Please choose a valid level");
+		}
+	}
+
+	void StartGame()
+	{
+		Terminal.WriteLine("Level " + level + " started.");
 	}
 }
